@@ -1,0 +1,37 @@
+.header {
+    padding: 60px;
+    text-align: center;
+    background: #1abc9c;
+    color: white;
+    font-size: 30px;
+    height: 85px;
+  }
+
+.content{
+  text-align: center;
+}
+
+.userHeader
+{
+  text-align: right;
+  margin-top: -100px;
+}
+
+.searchSpace{
+  margin-top: 50px;
+}
+
+.searchLabel{
+ font-size: 20px;
+ margin-left: 10px;
+}
+
+.main-div{
+  background-color: silver;
+  width: 450px;
+  height: 350px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
