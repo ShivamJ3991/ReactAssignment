@@ -10,12 +10,6 @@ class Home extends Component {
 
     constructor(props) {
         super(props)
-    
-        // let searchPlanetData = [];
-        // let searchData = localStorage.getItem('searchData')
-        // if (localStorage.getItem('isLogin') === 'true' && searchData) {
-        //     searchPlanetData = JSON.parse(searchData);
-        // }
         this.state = {
             searchPlanet : '' ,
             planets: [],
@@ -34,9 +28,7 @@ handleChange = (e) => {
 }
 
 searchPlanets = async (searchText) =>{
-
-    debugger
-    if(this.state.userName === "Luke Skywalker")
+    if(this.state.userName !== "Luke Skywalker")
     {
         let searchCount = this.state.hitCount;
         if(searchCount == 1)
@@ -44,7 +36,7 @@ searchPlanets = async (searchText) =>{
             this.setState({ searchTime : new Date().getTime()});
         }
         let setBlockingTime =  new Date(this.state.searchTime).setMinutes(new Date(this.state.searchTime).getMinutes() + 1);
-        if(new Date().getTime() < setBlockingTime  && searchCount >2)
+        if(new Date().getTime() < setBlockingTime  && searchCount >5)
         {
             this.setState({searchAble : false});
         
@@ -64,8 +56,6 @@ searchPlanets = async (searchText) =>{
     let response = await axios.get(apiURL+ searchText);
     if(response && response.data.results.length >0){
         this.setState({ planets : response.data.results });
-        // localStorage.setItem('searchData',JSON.stringify(response.data.results));
-       
     }
 }
 
@@ -98,7 +88,7 @@ handleSearch = debounce(this.searchPlanets, 1000);
                     </div>
                     <div className ="searchSpace">
                         {
-                          !this.state.searchAble &&  <span>Maximum limit to search is exceeded. Kindly wait for minute.</span>
+                          !this.state.searchAble &&  <span><h3>Maximum limit to search is exceeded. Kindly wait for minute.</h3></span>
                         }
                     </div>
                 </div>
