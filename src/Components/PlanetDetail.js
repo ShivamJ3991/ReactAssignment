@@ -3,6 +3,7 @@ import '../index.css';
 import axios from 'axios';
 import Config from "../config";
 import Header from './Header';
+import { withRouter } from 'react-router-dom';
 
 
 
@@ -26,7 +27,7 @@ class PlanetDetail extends React.Component {
         const { planetDetail } = this.state;
         return (
             <div>
-                <Header />
+                <Header history={this.props.history} />
                 <div className="container">
                     <div>
                         <h3>{planetDetail.name}</h3>
@@ -111,4 +112,4 @@ class PlanetDetail extends React.Component {
 }
 
 
-export default PlanetDetail;
+export default withRouter(PlanetDetail);

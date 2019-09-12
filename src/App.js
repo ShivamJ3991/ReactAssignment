@@ -1,23 +1,26 @@
 import React,{Fragment} from 'react';
-import logo from './logo.svg';
 import './App.css';
-import LoginComponent from './Components/LoginComponent'
-import Home from './Components/Home'
-import Footer from './Components/Footer';
+import LoginComponent from './Components/LoginComponent';
+import Home from './Components/Home';
+import PrivateRoute from './Components/PrivateRoute';
 import PlanetDetail from './Components/PlanetDetail';
-
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import ErrorNotFound from './Components/ErrorNotFound.js';
+import {  Route, Switch, BrowserRouter  } from "react-router-dom";
 
 function App() {
   return (
     
-    <Fragment>
-        <Router>
+    <BrowserRouter>
+      <Switch>
           <Route exact path="/"  component={LoginComponent} />
-          <Route exact path="/home/" component={Home} />
-          <Route exact path="/planet-detail/:Id" component={PlanetDetail} />
-       </Router>
-    </Fragment>
+          <PrivateRoute exact path="/home/" component={Home} />
+          <PrivateRoute exact path="/planet-detail/:Id" component={PlanetDetail} />
+
+        /* add 404 page */
+        <Route path="*" component={ErrorNotFound} />
+      </Switch>
+    </BrowserRouter>
+    
   );
 }
 

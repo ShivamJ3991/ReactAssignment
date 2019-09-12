@@ -8,12 +8,17 @@ class Header extends Component {
         super(props)
     
         this.state = {
-             userName :'Shivam'
+             userName :''
         }
     }
 
+    sessionClear = () =>{
+        debugger
+        localStorage.clear();
+        this.props.history.replace("/");
+    }
+
     render() {
-        console.log(this.props);
         return (
             <div className="header">
                 <p>Welcome to the planet world.</p>                
@@ -24,7 +29,7 @@ class Header extends Component {
                                 {localStorage.getItem('userName')}
                             </Dropdown.Toggle>
                              <Dropdown.Menu>
-                                <Dropdown.Item href="/">LogOut</Dropdown.Item>
+                                <Dropdown.Item onClick={this.sessionClear} href="/">LogOut</Dropdown.Item>
                              </Dropdown.Menu>
                         </Dropdown>
                 </div>

@@ -7,8 +7,7 @@ class LoginComponent extends Component {
 
     constructor(props) {
         super(props)
-    
-        localStorage.clear();
+        
         this.state = {
             isLogin : false,
             userName :'',
@@ -26,6 +25,7 @@ class LoginComponent extends Component {
             {
                 localStorage.setItem('isLogin', true);
                 localStorage.setItem('userName', this.state.userName);
+                debugger
                 this.props.history.push('/Home');
                 this.setState({ showError : true})
             }
